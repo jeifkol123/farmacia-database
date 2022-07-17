@@ -1,34 +1,34 @@
 INSERT INTO sucursal(id_sucursal, direccion_sucursal, telefono_sucursal)
 SELECT 1, 'manta', '0936389373' FROM dual UNION ALL
 SELECT 2, 'portoviejo', '0981726354' FROM dual UNION ALL
-SELECT 3, 'montecristi', '0913243546' FROM dual 
+SELECT 3, 'montecristi', '0913243546' FROM dual;
 
 INSERT INTO estado_vendedor(id_estado_vendedor, estado_vendedor)
 SELECT 1, 'activo' FROM dual UNION ALL
-SELECT 2, 'inactivo' FROM dual 
+SELECT 2, 'inactivo' FROM dual;
 
 INSERT INTO vendedor(id_vendedor, id_sucursal, id_estado_vendedor, cedula_vendedor, nombre_vendedor, 
-apellidos_vendedor, direccion_vendedor, fecha_nacimiento_vendedor, fecha_ingreso_vendedor)
-SELECT 01,1,1,'1152637051','Tomás','Ignacio','Fusagasugá','31/12/2000','10/07/2018' FROM dual UNION ALL
-SELECT 02,2,1,'1237171773','Tato','Alonso','Ibagué','09/06/1997','15/02/2020' FROM dual UNION ALL
-SELECT 03,3,1,'0335760332','Rosendo','Gil','Cisnes','08/08/1996','08/02/2020' FROM dual UNION ALL
-SELECT 04,1,1,'1403730235','Samuel','Laureal','Pozo Almonte','07/01/1999','05/08/2021' FROM dual UNION ALL
-SELECT 05,1,2,'1382431296','Nicolás','Rivera','Pacasmayo','11/02/1998','07/05/2018' FROM dual UNION ALL
-SELECT 06,2,2,'1231466320','Andrés','Catalist','Barranca','22/08/1999','05/06/2021' FROM dual UNION ALL
-SELECT 07,3,2,'1780388751','Juan','Juliens','Pereira','08/09/2000','12/04/2020' FROM dual UNION ALL
-SELECT 08,1,2,'1354585751','Francisco','Juan','Mala','05/11/1999','01/08/2019' FROM dual UNION ALL
-SELECT 09,1,1,'1232973845','Aznar','Serrano','Calarcá','05/05/1997','11/05/2020' FROM dual UNION ALL
-SELECT 10,2,1,'1112781777','Pablo','Valentinez','Cusco','10/10/1995','11/07/2019' FROM dual UNION ALL
-SELECT 11,1,1,'1246427796','Guillermo','Romero','O''Higgins','10/04/1999','01/04/2020' FROM dual UNION ALL
-SELECT 12,2,1,'0332871350','Amílcar','Mora','Caldera','10/03/2000','07/05/2018' FROM dual UNION ALL
-SELECT 13,1,1,'0752463167','Francisco','Ibañez','Palmira','07/02/1997','10/11/2018' FROM dual UNION ALL
-SELECT 14,2,1,'0841478488','Isaac','Felipe','Llaillay','05/08/1998','09/03/2020' FROM dual UNION ALL
-SELECT 15,2,2,'0584553527','Tonin','Romero','Aguachica','07/06/2000','10/08/2018' FROM dual UNION ALL
-SELECT 16,2,1,'0790811123','Martín','Soto','Iquitos','09/07/1997','02/07/2019' FROM dual UNION ALL
-SELECT 17,1,2,'1237947710','Jhon','Morales','Colchane','07/03/1995','07/08/2019' FROM dual UNION ALL
-SELECT 18,2,2,'1383786512','Raul','Ramos','Cusco','02/06/1997','02/04/2019' FROM dual UNION ALL
-SELECT 19,1,2,'1097425627','Francisco','Peña','Barrancabermeja','06/03/1998','12/05/2019' FROM dual UNION ALL
-SELECT 20,1,2,'1146096427','Ernesto','Saez','General Lagos','10/11/2000','09/03/2019' FROM dual 
+apellidos_vendedor, direccion_vendedor, fecha_nacimiento_vendedor, fecha_ingreso_vendedor,id_superior)
+SELECT 01,1,1,'1152637051','Tomás','Ignacio','Fusagasugá','31/12/2000','10/07/2018',5 FROM dual UNION ALL
+SELECT 02,2,1,'1237171773','Tato','Alonso','Ibagué','09/06/1997','15/02/2020',3 FROM dual UNION ALL
+SELECT 03,3,1,'0335760332','Rosendo','Gil','Cisnes','08/08/1996','08/02/2020',5 FROM dual UNION ALL
+SELECT 04,1,1,'1403730235','Samuel','Laureal','Pozo Almonte','07/01/1999','05/08/2021',9 FROM dual UNION ALL
+SELECT 05,1,2,'1382431296','Nicolás','Rivera','Pacasmayo','11/02/1998','07/05/2018',null FROM dual UNION ALL
+SELECT 06,2,2,'1231466320','Andrés','Catalist','Barranca','22/08/1999','05/06/2021',9 FROM dual UNION ALL
+SELECT 07,3,2,'1780388751','Juan','Juliens','Pereira','08/09/2000','12/04/2020',15 FROM dual UNION ALL
+SELECT 08,1,2,'1354585751','Francisco','Juan','Mala','05/11/1999','01/08/2019',20 FROM dual UNION ALL
+SELECT 09,1,1,'1232973845','Aznar','Serrano','Calarcá','05/05/1997','11/05/2020',12 FROM dual UNION ALL
+SELECT 10,2,1,'1112781777','Pablo','Valentinez','Cusco','10/10/1995','11/07/2019',12 FROM dual UNION ALL
+SELECT 11,1,1,'1246427796','Guillermo','Romero','O''Higgins','10/04/1999','01/04/2020',17 FROM dual UNION ALL
+SELECT 12,2,1,'0332871350','Amílcar','Mora','Caldera','10/03/2000','07/05/2018',null FROM dual UNION ALL
+SELECT 13,1,1,'0752463167','Francisco','Ibañez','Palmira','07/02/1997','10/11/2018',15 FROM dual UNION ALL
+SELECT 14,2,1,'0841478488','Isaac','Felipe','Llaillay','05/08/1998','09/03/2020',17 FROM dual UNION ALL
+SELECT 15,2,2,'0584553527','Tonin','Romero','Aguachica','07/06/2000','10/08/2018',12 FROM dual UNION ALL
+SELECT 16,2,1,'0790811123','Martín','Soto','Iquitos','09/07/1997','02/07/2019',20 FROM dual UNION ALL
+SELECT 17,1,2,'1237947710','Jhon','Morales','Colchane','07/03/1995','07/08/2019',10 FROM dual UNION ALL
+SELECT 18,2,2,'1383786512','Raul','Ramos','Cusco','02/06/1997','02/04/2019',12 FROM dual UNION ALL
+SELECT 19,1,2,'1097425627','Francisco','Peña','Barrancabermeja','06/03/1998','12/05/2019',20 FROM dual UNION ALL
+SELECT 20,1,2,'1146096427','Ernesto','Saez','General Lagos','10/11/2000','09/03/2019',null FROM dual;
 
 INSERT INTO cliente(id_cliente, cedula_cliente, nombre_cliente, apellidop_cliente,apellidom_cliente, 
 telefono_cliente, direccion_cliente)
@@ -51,18 +51,17 @@ SELECT 16,'1372746436','Carlo','Moya','Robertson','0928187117','Fundación' FROM
 SELECT 17,'1348376968','David','Gil','Russell','0958280823','General Lagos' FROM dual UNION ALL
 SELECT 18,'1328394822','Miguel','Suarez','Francis','0941112900','Arica' FROM dual UNION ALL
 SELECT 19,'1334523758','Alfonso','Soto','Francis','0918934131','Pacoa' FROM dual UNION ALL
-SELECT 20,'1321341257','Luis','Peña','Stanley','0967111803','Cartagena del Chairá' FROM dual 
+SELECT 20,'1321341257','Luis','Peña','Stanley','0967111803','Cartagena del Chairá' FROM dual;
 
 INSERT INTO proveedor(
 id_proveedor, razon_social_proveedor, direccion_proveedor, telefono_proveedor)
 SELECT 1,'Institute Magno','Lima','0922109515' FROM dual UNION ALL
 SELECT 2,'Corporación AndyLabs','Rionegro','0982421615' FROM dual UNION ALL
 SELECT 3,'Farmaceutica Inc.','Barrancabermeja','0958741326' FROM dual UNION ALL
-SELECT 4,'Ipsum Leo Corporation','Pacoa','0918934131' FROM dual 
+SELECT 4,'Ipsum Leo Corporation','Pacoa','0918934131' FROM dual;
 
 
-INSERT INTO sucursal_proveedor(
-id_sucursal, id_proveedor)
+INSERT INTO sucursal_proveedor(id_sucursal, id_proveedor)
 SELECT 1, 1 FROM dual UNION ALL
 SELECT 1, 2 FROM dual UNION ALL
 SELECT 1, 3 FROM dual UNION ALL
@@ -70,7 +69,7 @@ SELECT 2, 4 FROM dual UNION ALL
 SELECT 2, 2 FROM dual UNION ALL
 SELECT 3, 1 FROM dual UNION ALL
 SELECT 3, 3 FROM dual UNION ALL
-SELECT 3, 4 FROM dual
+SELECT 3, 4 FROM dual;
 
 INSERT INTO descrip_producto(id_descripcion, categoria_descrip, cantidad_descrip,
 presentacion_descrip, compuestos_descrip, similar_producto)
@@ -83,7 +82,7 @@ SELECT 6, 'Cardiología', '0.05 mg/ml', '30 tabletas', 'lactosa monohidrato, pro
 SELECT 7,'Dermatología', '25 g/100 g', 'Envase con 20 g','adapaleno, peróxido de benzoilo' , 'Permetrina' FROM dual UNION ALL
 SELECT 8, 'Dermatología','20 mg/ 1 g', 'Envase con 30 ml, 50 ml', 'Phenoxybenzyl, dichlorovinyl','Benzoilo' FROM dual UNION ALL
 SELECT 9, 'Oftalmología', '0.5 mg/ml', 'Gotero integral con 5 ml', 'cloruro de benzalconio ', 'Cloruro de sodio ' FROM dual UNION ALL
-SELECT 10, 'Oftalmología', '50 mg/g', 'Envase con 7 g o con gotero integral con 10 ml', 'cloruro sódico o sal ', 'Betaxolol ' FROM dual 
+SELECT 10, 'Oftalmología', '50 mg/g', 'Envase con 7 g o con gotero integral con 10 ml', 'cloruro sódico o sal ', 'Betaxolol ' FROM dual;
 
 INSERT INTO producto(
 id_producto, id_descripcion, unidad_producto,
@@ -98,7 +97,7 @@ SELECT 6, 6, 1, 'Digoxina', 5.67, 6.7,'02/05/2024', 3300 FROM dual UNION ALL
 SELECT 7, 7, 1, 'Benzoilo', 4.67, 6.75,'07/09/2026', 7800 FROM dual UNION ALL
 SELECT 8, 8, 1,'Permetrina' , 7.7, 8.56, '06/03/2026', 2900 FROM dual UNION ALL
 SELECT 9, 9, 1, 'Betaxolol ', 8.6, 9.5, '04/05/2025', 2300 FROM dual UNION ALL
-SELECT 10, 10, 1, 'Cloruro de sodio ', 6.7, 7.6, '07/09/2025', 2200 FROM dual 
+SELECT 10, 10, 1, 'Cloruro de sodio ', 6.7, 7.6, '07/09/2025', 2200 FROM dual;
 
 INSERT INTO promocion(
 id_promocion, id_sucursal, fecha_inicio_promocion,
@@ -108,7 +107,7 @@ SELECT 2, 2, '03/01/2022', '06/01/2022',10.00, 0.2 FROM dual UNION ALL
 SELECT 3, 3, '02/01/2022', '05/01/2022',30.00, 0.3 FROM dual UNION ALL
 SELECT 4, 2, '04/01/2022', '06/01/2022',25.00, 0.2 FROM dual UNION ALL
 SELECT 5, 1, '05/01/2022', '07/01/2022',50.00, 0.5 FROM dual UNION ALL
-SELECT 6, 3, '06/01/2022', '08/01/2022',25.00, 0.3 FROM dual 
+SELECT 6, 3, '06/01/2022', '08/01/2022',25.00, 0.3 FROM dual;
 
 
 
@@ -116,7 +115,7 @@ INSERT INTO dato_pago(id_pago, pago_hora)
 SELECT 1, 2.25 FROM dual UNION ALL
 SELECT 2, 2.50 FROM dual UNION ALL
 SELECT 3, 2.75 FROM dual UNION ALL
-SELECT 4, 3.00 FROM dual 
+SELECT 4, 3.00 FROM dual;
 
 INSERT INTO pago(id_dato_pago, id_vendedor, id_pago, hora_extra)
 SELECT 1,01,2,14 FROM dual UNION ALL
@@ -138,7 +137,7 @@ SELECT 16,16,2,7 FROM dual UNION ALL
 SELECT 17,17,1,11 FROM dual UNION ALL
 SELECT 18,18,2,6 FROM dual UNION ALL
 SELECT 19,19,4,12 FROM dual UNION ALL
-SELECT 20,20,4,14 FROM dual 
+SELECT 20,20,4,14 FROM dual;
 
 
 INSERT INTO factura(id_factura, id_vendedor, id_cliente,  id_promocion,
@@ -162,18 +161,18 @@ SELECT 16,15,16,5,2,19.86,'09/06/2021',17.98 FROM dual UNION ALL
 SELECT 17,15,08,6,4,19.70,'01/04/2022',18.27 FROM dual UNION ALL
 SELECT 18,05,03,1,3,20.01,'10/05/2021',17.93 FROM dual UNION ALL
 SELECT 19,02,02,2,6,19.99,'01/02/2022',17.97 FROM dual UNION ALL
-SELECT 20,08,17,4,1.86,20.49,'06/03/2021',18.27 FROM dual 
+SELECT 20,08,17,4,1.86,20.49,'06/03/2021',18.27 FROM dual;
 
 
-INSERT INTO detalle_venta(id_detalle_venta,id_producto,id_factura,
+INSERT INTO detalle_venta(id_detalle_venta,id_producto,
 cantidad_venta,precio_producto,total_detalle_venta)
-SELECT 01,2,1,1,6.15,6.15 FROM dual UNION ALL
-SELECT 02,9,2,1,7.34,7.34 FROM dual UNION ALL
-SELECT 03,3,3,1,0.86,0.86 FROM dual UNION ALL
-SELECT 04,8,4,1,3.66,3.66 FROM dual UNION ALL
-SELECT 05,6,5,1,6.84,6.84 FROM dual UNION ALL
-SELECT 06,2,6,1,6.29,6.29 FROM dual UNION ALL
-SELECT 07,6,7,1,3.65,3.65 FROM dual UNION ALL
-SELECT 08,3,8,1,6.47,6.47 FROM dual UNION ALL
-SELECT 09,4,9,1,0.63,0.63 FROM dual UNION ALL
-SELECT 10,10,10,1,3.28,3.28 FROM dual 
+SELECT 01,2,1,6.15,6.15 FROM dual UNION ALL
+SELECT 02,9,1,7.34,7.34 FROM dual UNION ALL
+SELECT 03,3,1,0.86,0.86 FROM dual UNION ALL
+SELECT 04,8,1,3.66,3.66 FROM dual UNION ALL
+SELECT 05,6,1,6.84,6.84 FROM dual UNION ALL
+SELECT 06,2,1,6.29,6.29 FROM dual UNION ALL
+SELECT 07,6,1,3.65,3.65 FROM dual UNION ALL
+SELECT 08,3,1,6.47,6.47 FROM dual UNION ALL
+SELECT 09,4,1,0.63,0.63 FROM dual UNION ALL
+SELECT 10,10,1,3.28,3.28 FROM dual;
