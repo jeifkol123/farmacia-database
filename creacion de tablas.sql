@@ -1,3 +1,73 @@
+/*==============================================================*/
+/* DBMS name:      ORACLE Version 11g                           */
+/* Created on:     16/07/2022 20:55:52                          */
+/*==============================================================*/
+
+
+alter table DETALLE_VENTA
+   drop constraint FK_DETALLE__PRODUCTO__PRODUCTO;
+
+alter table FACTURA
+   drop constraint FK_FACTURA_CLIENTE_F_CLIENTE;
+
+alter table FACTURA
+   drop constraint FK_FACTURA_PROMO_FAC_PROMOCIO;
+
+alter table FACTURA
+   drop constraint FK_FACTURA_VENDEDOR__VENDEDOR;
+
+alter table FACTURA
+   drop constraint FK_FACTURA_VENTA_DET_DETALLE_;
+
+alter table PAGO
+   drop constraint FK_PAGO_PAGO_DATO_DATO_PAG;
+
+alter table PAGO
+   drop constraint FK_PAGO_PAGO_VEND_VENDEDOR;
+
+alter table PRODUCTO
+   drop constraint FK_PRODUCTO_PRODUCTO__DESCRIP_;
+
+alter table PROMOCION
+   drop constraint FK_PROMOCIO_SUCURSAL__SUCURSAL;
+
+alter table SUCURSAL_PROVEEDOR
+   drop constraint FK_SUCURSAL_SUCURSAL__PROVEEDO;
+
+alter table SUCURSAL_PROVEEDOR
+   drop constraint FK_SUCURSAL_SUCURSAL__SUCURSAL;
+
+alter table VENDEDOR
+   drop constraint FK_VENDEDOR_ESTADO_VE_ESTADO_V;
+
+alter table VENDEDOR
+   drop constraint FK_VENDEDOR_SUCURSAL__SUCURSAL;
+
+drop table CLIENTE cascade constraints;
+
+drop table DATO_PAGO cascade constraints;
+
+drop table DESCRIP_PRODUCTO cascade constraints;
+
+drop table DETALLE_VENTA cascade constraints;
+
+drop table ESTADO_VENDEDOR cascade constraints;
+
+drop table FACTURA cascade constraints;
+
+drop table PAGO cascade constraints;
+
+drop table PRODUCTO cascade constraints;
+
+drop table PROMOCION cascade constraints;
+
+drop table PROVEEDOR cascade constraints;
+
+drop table SUCURSAL cascade constraints;
+
+drop table SUCURSAL_PROVEEDOR cascade constraints;
+
+drop table VENDEDOR cascade constraints;
 
 /*==============================================================*/
 /* Table: CLIENTE                                               */
@@ -20,7 +90,7 @@ create table CLIENTE
 create table DATO_PAGO 
 (
    ID_PAGO              INTEGER              not null,
-   PAGO_HORA            FLOAT(7)             not null,
+   PAGO_HORA            FLOAT(4)             not null,
    constraint PK_DATO_PAGO primary key (ID_PAGO)
 );
 
@@ -45,10 +115,9 @@ create table DETALLE_VENTA
 (
    ID_DETALLE_VENTA     INTEGER              not null,
    ID_PRODUCTO          INTEGER              not null,
-   ID_FACTURA           INTEGER,
    CANTIDAD_VENTA       INTEGER,
-   PRECIO_PRODUCTO      FLOAT(16),
-   TOTAL_DETALLE_VENTA  FLOAT(16),
+   PRECIO_PRODUCTO      FLOAT(8),
+   TOTAL_DETALLE_VENTA  FLOAT(8),
    constraint PK_DETALLE_VENTA primary key (ID_DETALLE_VENTA)
 );
 
@@ -70,11 +139,12 @@ create table FACTURA
    ID_FACTURA           INTEGER              not null,
    ID_VENDEDOR          INTEGER              not null,
    ID_CLIENTE           INTEGER              not null,
+   ID_DETALLE_VENTA     INTEGER,
    ID_PROMOCION         INTEGER,
    DESCUENTO_FACTURA    NUMBER,
-   TOTAL_FACTURA        FLOAT(16),
+   TOTAL_FACTURA        FLOAT(8),
    FECHA_FACTURA        DATE,
-   PRECIO_FINAL_DESC_FACTURA FLOAT(16),
+   PRECIO_FINAL_DESC_FACTURA FLOAT(8),
    constraint PK_FACTURA primary key (ID_FACTURA)
 );
 
@@ -86,7 +156,7 @@ create table PAGO
    ID_DATO_PAGO         INTEGER              not null,
    ID_VENDEDOR          INTEGER,
    ID_PAGO              INTEGER,
-   HORA_EXTRA           FLOAT(16),
+   HORA_EXTRA           FLOAT(8),
    constraint PK_PAGO primary key (ID_DATO_PAGO)
 );
 
@@ -99,8 +169,8 @@ create table PRODUCTO
    ID_DESCRIPCION       INTEGER,
    UNIDAD_PRODUCTO      INTEGER,
    NOMBRE_PRODUCTO      VARCHAR2(40),
-   COSTO_PRODUCTO       FLOAT(16),
-   PRECIO_PRODUCTO      FLOAT(16),
+   COSTO_PRODUCTO       FLOAT(8),
+   PRECIO_PRODUCTO      FLOAT(8),
    FECHA_VENCIM_PRODUCTO DATE,
    STOCK_PRODUCTO       INTEGER,
    constraint PK_PRODUCTO primary key (ID_PRODUCTO)
@@ -115,8 +185,8 @@ create table PROMOCION
    ID_SUCURSAL          INTEGER              not null,
    FECHA_INICIO_PROMOCION DATE,
    FECHA_FIN_PROMOCION  DATE,
-   CANT_PROD_PROMOCION  FLOAT(16),
-   PRECIO_FIN_PROMOCION FLOAT(16),
+   CANT_PROD_PROMOCION  FLOAT(8),
+   PRECIO_FIN_PROMOCION FLOAT(8),
    constraint PK_PROMOCION primary key (ID_PROMOCION)
 );
 
@@ -167,16 +237,13 @@ create table VENDEDOR
    DIRECCION_VENDEDOR   VARCHAR2(40),
    FECHA_NACIMIENTO_VENDEDOR DATE,
    FECHA_INGRESO_VENDEDOR DATE,
+   ID_SUPERIOR          INTEGER,
    constraint PK_VENDEDOR primary key (ID_VENDEDOR)
 );
 
 alter table DETALLE_VENTA
    add constraint FK_DETALLE__PRODUCTO__PRODUCTO foreign key (ID_PRODUCTO)
       references PRODUCTO (ID_PRODUCTO);
-
-alter table DETALLE_VENTA
-   add constraint FK_DETALLE__VENTA_DET_FACTURA foreign key (ID_FACTURA)
-      references FACTURA (ID_FACTURA);
 
 alter table FACTURA
    add constraint FK_FACTURA_CLIENTE_F_CLIENTE foreign key (ID_CLIENTE)
@@ -189,6 +256,10 @@ alter table FACTURA
 alter table FACTURA
    add constraint FK_FACTURA_VENDEDOR__VENDEDOR foreign key (ID_VENDEDOR)
       references VENDEDOR (ID_VENDEDOR);
+
+alter table FACTURA
+   add constraint FK_FACTURA_VENTA_DET_DETALLE_ foreign key (ID_DETALLE_VENTA)
+      references DETALLE_VENTA (ID_DETALLE_VENTA);
 
 alter table PAGO
    add constraint FK_PAGO_PAGO_DATO_DATO_PAG foreign key (ID_PAGO)
@@ -221,4 +292,5 @@ alter table VENDEDOR
 alter table VENDEDOR
    add constraint FK_VENDEDOR_SUCURSAL__SUCURSAL foreign key (ID_SUCURSAL)
       references SUCURSAL (ID_SUCURSAL);
+
 
